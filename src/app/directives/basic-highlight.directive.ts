@@ -3,6 +3,7 @@ import {
 	ElementRef,
 	HostBinding,
 	HostListener,
+	Input,
 	OnInit
 	// Renderer2
 } from '@angular/core';
@@ -11,6 +12,8 @@ import {
 	selector: '[appBasicHighlight]'
 })
 export class BasicHighlightDirective implements OnInit {
+	@Input() defaultColor: string = 'transparent';
+	@Input('appBasicHighlight') highlightColor: string = 'skyblue';
 	@HostBinding('style.backgroundColor') backgroundColor!: string;
 
 	constructor(
@@ -27,7 +30,7 @@ export class BasicHighlightDirective implements OnInit {
 		// 	'backgroundColor',
 		// 	'limegreen'
 		// );
-		this.backgroundColor = 'limegreen';
+		this.backgroundColor = this.highlightColor;
 	}
 
 	@HostListener('mouseleave') onMouseLeave() {
@@ -41,6 +44,6 @@ export class BasicHighlightDirective implements OnInit {
 		// 	'transparent'
 		// );
 
-		this.backgroundColor = 'transparent';
+		this.backgroundColor = this.defaultColor;
 	}
 }
