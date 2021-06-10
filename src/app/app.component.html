@@ -4,7 +4,11 @@
 			<button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">
 				{{ !onlyOdd ? 'Only show odd numbers' : 'Show all numbers' }}
 			</button>
+
 			<br />
+
+			<p class="my-3" *appUnless="onlyOdd">Showing all numbers.</p>
+
 			<ul class="list-group my-3">
 				<ng-container *ngFor="let number of numbers; let odd = odd">
 					<li
